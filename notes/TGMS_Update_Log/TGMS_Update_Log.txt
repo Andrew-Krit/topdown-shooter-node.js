@@ -1,0 +1,54 @@
+
+[Update Log]
+
+Welcome, fellow log enthusiast!  
+
+[!! Breaking Changes !!]
+	
+	#1  GameMaker 2022 or newer is required.
+		If you need to revert to a previous version supporting pre-2022, you can download v1.12 from here: 
+		https://stephenloney.com/_/TweenGMS/112/TweenGMS_Pro_v112.yymps
+
+	#2	(As of v1.11) Please be aware that target handling for tween callbacks has been modified.
+		Methods used as a callback script will now use the specified callback target, overriding its existing calling environment.
+		To maintain a method's existing 'self', please use the keyword [undefined] as the callback target.
+		You can find more information about this in the log below or under TweenAddCallback() in the Script Reference.
+		If upgrading an existing project, please validate that your tween callbacks still work as intended.
+		
+	#3  TGMS_BuildProperty() now requires a GETTER to be supplied
+
+
+[Version 1.21]
+
+- Fixed error for TweenGet() when using multi-property tweens
+	* affected "start", "dest", and "property" tags
+
+- Cleaned up script organization
+	* removed deprecated script/function name matching
+
+- Cleaned up Feather compatibility
+
+
+[Version 1.20]
+
+- Removed function setter/getting functions (x__ / __x, image_angle__ / __image_angle, etc..)
+	* Property strings ("x", "image_angle") are now required
+	* This clears up conflicts with other libraries in the global namespace
+
+- TPUser() user events no longer need to use the TWEEN_USER_TARGET macro
+	* The calling target environment is now used automatically
+
+- TPExt() can now take methods
+	* Note that they are stripped of their calling environment
+
+- Changed name to TweenGMS Legacy
+	* This is in preparation for TweenGMS 2
+	
+- TGMS_BuildProperty() now requires a GETTER function to be provided
+- Error will no longer occur if instance associated with TPInst() is destroyed
+- Removed again 'Syntax Errors' for pre-feather environment
+- Added system functions to Feather @ignore list
+- Updated system initialization
+- Removed function TGMS_Null__()
+- Documentation tweaks
+
